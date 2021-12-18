@@ -11,14 +11,14 @@ float3 GetNormal(Varyings i){
 	return mergedNormals;
 }
 
-float3 NormalAdjust(Varyings i, int frontFace, float3 finalCombinedNormal){
+//KK uses VFACE to flip the normals, but that seems to break in reflection probes which is what messes up the lighting in mirrors
+float3 NormalAdjust(Varyings i, float3 finalCombinedNormal){
 	//Adjusting normals from tangent space
 	float3 adjustedYNormal = finalCombinedNormal.y * i.bitanWS.xyz;
 	float4 adjustedNormal = float4(finalCombinedNormal, 1);
 	adjustedNormal.xyw = finalCombinedNormal.x * i.tanWS.xyz + adjustedYNormal;
 	float faceVal = frontFace == true ? 1.0 : -1.0;
 	float3 worldNormal = normalize(i.normalWS);
-	worldNormal *= faceVal;
 	adjustedNormal.xyz = adjustedNormal.z * worldNormal.xyz + adjustedNormal.xyw;
 	float3 finalNormal = normalize(adjustedNormal.xyz);
 	return finalNormal;

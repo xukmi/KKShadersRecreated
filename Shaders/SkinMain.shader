@@ -62,8 +62,8 @@
 			#include "UnityCG.cginc"
 			#include "Lighting.cginc"
 
-			#include "CGinc/KKInput.cginc"
-			#include "CGinc/KKDiffuse.cginc"
+			#include "KKInput.cginc"
+			#include "KKDiffuse.cginc"
 
 			Varyings vert (VertexData v)
 			{
@@ -109,7 +109,7 @@
 
 			
 
-			fixed4 frag (Varyings i, int frontFace : VFACE) : SV_Target
+			fixed4 frag (Varyings i) : SV_Target
 			{
 				//Defined in Diffuse.cginc
 				AlphaClip(i.uv0);	
@@ -191,11 +191,11 @@
 			#include "Lighting.cginc"
 
 
-			#include "CGinc/KKInput.cginc"
-			#include "CGinc/KKDiffuse.cginc"
-			#include "CGinc/KKNormals.cginc"
-			#include "CGinc/KKLighting.cginc"
-			#include "CGinc/KKCoom.cginc"
+			#include "KKInput.cginc"
+			#include "KKDiffuse.cginc"
+			#include "KKNormals.cginc"
+			#include "KKLighting.cginc"
+			#include "KKCoom.cginc"
 
 
 			Varyings vert (VertexData v)
@@ -229,7 +229,7 @@
 
 
 
-			fixed4 frag (Varyings i, int frontFace : VFACE) : SV_Target
+			fixed4 frag (Varyings i) : SV_Target
 			{
 				//Clips based on alpha texture
 				AlphaClip(i.uv0);
@@ -254,7 +254,7 @@
 
 				//Combines normals from cum then adjusts to usable form
 				float3 finalCombinedNormal = lerp(normal, liquidNormal, liquidFinalMask); 
-				normal = NormalAdjust(i, frontFace, finalCombinedNormal);
+				normal = NormalAdjust(i, finalCombinedNormal);
 
 
 				//Detailmask channels:
