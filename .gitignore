@@ -48,6 +48,14 @@ ExportedObj/
 *.pdb.meta
 *.mdb.meta
 
+#Ignore all .meta file
+*.meta
+#But not source file with postfix. which is everything but a folder
+!*.*.meta
+*.shader.meta
+*.md.meta
+*.cginc.meta
+
 # Unity3D generated file on crash reports
 sysinfo.txt
 
@@ -57,4 +65,3 @@ sysinfo.txt
 
 # Crashlytics generated file
 crashlytics-build.properties
-
