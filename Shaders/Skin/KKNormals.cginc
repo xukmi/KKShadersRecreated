@@ -17,7 +17,6 @@ float3 NormalAdjust(Varyings i, float3 finalCombinedNormal){
 	float3 adjustedYNormal = finalCombinedNormal.y * i.bitanWS.xyz;
 	float4 adjustedNormal = float4(finalCombinedNormal, 1);
 	adjustedNormal.xyw = finalCombinedNormal.x * i.tanWS.xyz + adjustedYNormal;
-	float faceVal = frontFace == true ? 1.0 : -1.0;
 	float3 worldNormal = normalize(i.normalWS);
 	adjustedNormal.xyz = adjustedNormal.z * worldNormal.xyz + adjustedNormal.xyw;
 	float3 finalNormal = normalize(adjustedNormal.xyz);

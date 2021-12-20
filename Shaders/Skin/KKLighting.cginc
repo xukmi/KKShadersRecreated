@@ -13,8 +13,6 @@ float GetLightRamp(float3 worldLightPos, float3 normal){
     return ramp.x;
 }
 
-
-
 //Specular
 float GetDrawnSpecular(Varyings i, float4 detailMask, float shadowAttenuation, float3 viewDir, out float3 drawnSpecularColor){
 	float specularHeight = _SpeclarHeight  - 1.0;
