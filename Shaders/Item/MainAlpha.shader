@@ -283,7 +283,7 @@
 				detailSpecularOffset.y = dot(i.bitanWS, viewDir);
 				float2 detailMaskUV2 = specularHeight * detailSpecularOffset + i.uv0;
 				detailMaskUV2 = detailMaskUV2 * _DetailMask_ST.xy + _DetailMask_ST.zw;
-				float drawnSpecular = tex2D(_DetailMask, detailMaskUV2);
+				float drawnSpecular = tex2D(_DetailMask, detailMaskUV2).x;
 				float drawnSpecularSquared = min(drawnSpecular * drawnSpecular, 1.0);
 				drawnSpecular = drawnSpecular - drawnSpecularSquared;
 				drawnSpecular = saturate(drawnSpecular);
